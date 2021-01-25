@@ -32,6 +32,8 @@ happy_it <- happy_cntry %>% filter (cntry == "IT")
 happy_fi <- happy_cntry %>% filter (cntry == "FI")
 ```
 
+
+##### Plots
 The happiness level plot in Italy presents a gradually increasing frequency up to happiness level 8 (highest peak registered with more than 600 respondents) and then decreases radically for level 9 and 10.
 ```{r}
 barplot((table(happy_it$happy)),
@@ -68,9 +70,24 @@ happy_cntry %>%
 
 To be sure that the difference between the happiness level in Italy and Finland is statistically significant, we decided to compute a t-test to compare the two means.
 
+##### T-Test
 ```{r}
 t.test(happy_it$happy, happy_fi$happy, var.equal = TRUE)
 ```
-As can be seen, we can reject the null hypothesis that the level of happiness is the same between the two countries. It is possible to observe that the confidence interval
-does not contain 0, the t value is very large (t=-22.215), and the p-value is very small (P=0.000). Given these results, it is possible to state that there is a difference between the level of happiness is the same between Italy and Finland.
+
+As can be seen, we can reject the hypothesis that the level of happiness is the same between the two countries (H0). It is possible to observe that the confidence interval
+does not contain 0, the t value is very large (t=-22.215), and the p-value is very small (P=0.000). Given these results, it is possible to state that there is a statistically significant difference between the level of happiness between Italy and Finland.
+
+
+```{r}
+boxplot(happy ~ cntry, data = happy_cntry, 
+        horizzontal = F,
+        las = 1,
+        xlab = "Country",
+        ylab = "Level of happiness",
+        main = "Happiness in Finland and Italy")
+```
+
+Again, in this box plot, it is possible to observe that the mean difference of the level of happiness in the two countries is different, in particular, Italians are on average less happy than Finns. 
+
 
