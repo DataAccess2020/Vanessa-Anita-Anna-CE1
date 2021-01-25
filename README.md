@@ -1,7 +1,7 @@
 # Vanessa-Anita-Anna-CE1
 
 
-VIABLE QUESTION: Are Finns happier than Italians?
+VIABLE QUESTION: Taking all things together, how happy would Italians and Finns say they are?
 
 
 EMPIRICAL HYPOTHESIS: Beginning from the assumption that Finns are more satisfied with their economics, politics and well-being, we hypotesize that they are happier than Italians. 
