@@ -10,11 +10,26 @@ To begin with our small research, the variable chosen was “happy” which is f
 The categories in which the answer could fall are comprised within 0 (extremely unhappy) to 10 (extremely happy). 
 The analysis wanted to be a comparison between two countries. Hence, to direct our analysis on a significant and not random comparison, we appealed to the 2018 Eurostat report on the happiest European country of the year. Although the survey question was different (“rank your frequency of being happy in the past four weeks”), it was still an important starting point for the choice of our countries: 
 we opted for Italy, since it is our home country, and for Finland since in the 
-Eurostat report it is the highest ranked country.
-```{r}
+Eurostat (https://ec.europa.eu/eurostat/web/products-eurostat-news/-/DDN-20191107-1) report it is the highest ranked country.
+```{r message=FALSE}
 library(tidyverse)
 library(rio)
 
 happy_data <- import("ESS1-9e01.csv")
 ```
+
+At this point, data was cleared: firstly, all countries except from Italy and Finland were dropped and secondly, all subjects with missing observations (refusal *[code: 77]*, don’t know *[code: 88]*, no answer *[code: 99]*) on the variable of interest were deleted form the analysis.
+
+```{r}
+happy_cntry <- filter(
+  happy_data,
+  cntry %in% c("IT", "FI"),
+  !(happy==77 | happy==88 | happy==99)
+)
+
+happy_it <- happy_cntry %>% filter (cntry == "IT")
+
+happy_fi <- happy_cntry %>% filter (cntry == "FI")
+```
+
 
