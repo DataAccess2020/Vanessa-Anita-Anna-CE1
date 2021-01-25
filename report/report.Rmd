@@ -11,7 +11,7 @@ The categories in which the answer could fall are comprised within 0 (extremely 
 The analysis wanted to be a comparison between two countries. Hence, to direct our analysis on a significant and not random comparison, we appealed to the 2018 Eurostat report on the happiest European country of the year. Although the survey question was different (“rank your frequency of being happy in the past four weeks”), it was still an important starting point for the choice of our countries: 
 we opted for Italy, since it is our home country, and for Finland since in the 
 Eurostat (https://ec.europa.eu/eurostat/web/products-eurostat-news/-/DDN-20191107-1) report it is the highest ranked country.
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(rio)
 
@@ -31,5 +31,41 @@ happy_it <- happy_cntry %>% filter (cntry == "IT")
 
 happy_fi <- happy_cntry %>% filter (cntry == "FI")
 ```
+
+The happiness level plot in Italy presents a gradually increasing frequency up to happiness level 8 (highest peak registered with more than 600 respondents) and then decreases radically for level 9 and 10.
+```{r}
+barplot((table(happy_it$happy)),
+        col="blue",
+        xlab = "Level of happiness",
+        ylab = "Frequency",
+        main = "How happy are you?")
+```
+
+
+For what concerns the happiness level plot in Finland, instead, it pictures its highest frequencies at happiness level 8 and 9 to then decrease significantly at level 10. 
+```{r}
+barplot((table(happy_fi$happy)),
+        col="red",
+        xlab = "Level of happiness",
+        ylab = "Frequency",
+        main = "How happy are you?")
+```
+
+
+The Italian plot is less skewed to the left than the Finnish one, this means that the people from Finland are generally more happy than the ones from Italy. 
+We should bear in mind that Italy presents almost 1000 observations more than Finland and this makes it hard to make a comparison.
+```{r, warning=FALSE}
+happy_cntry %>%
+  ggplot(aes(x = happy, fill = cntry)) +
+  geom_bar(alpha = 1, col = "black", binwidth = 10) +
+  scale_x_continuous(breaks = seq(0, 10, by = 1))+
+  scale_color_manual(values = c("red", "blue")) +
+  xlab("level of happiness") +
+  ylab("frequency") +
+  theme_bw() +
+  theme(legend.position = "bottom")
+```
+
+To be sure that the difference between the happiness level in Italy and Finland is statistically significant, we decided to compute a t-test to compare the two means.
 
 
