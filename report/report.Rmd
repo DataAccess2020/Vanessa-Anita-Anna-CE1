@@ -68,4 +68,9 @@ happy_cntry %>%
 
 To be sure that the difference between the happiness level in Italy and Finland is statistically significant, we decided to compute a t-test to compare the two means.
 
+```{r}
+t.test(happy_it$happy, happy_fi$happy, var.equal = TRUE)
+```
+As can be seen, we can reject the null hypothesis that the level of happiness is the same between the two countries. It is possible to observe that the confidence interval
+does not contain 0, the t value is very large (t=-22.215), and the p-value is very small (P=0.000). Given these results, it is possible to state that there is a difference between the level of happiness is the same between Italy and Finland.
 
