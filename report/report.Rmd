@@ -1,0 +1,20 @@
+---
+title: "How happy are you? A comparison between Italy and Finland."
+author: "Vanessa, Anita and Anna"
+date: "25 gennaio 2021"
+output: html_document
+---
+In this analysis we have used the European Social Survey data (Round 9 – 2018) to investigate the level of happiness a European citizen says to be. 
+To begin with our small research, the variable chosen was “happy” which is formulated for the survey into the following question:
+“Taking all things together, how happy would you say you are?”
+The categories in which the answer could fall are comprised within 0 (extremely unhappy) to 10 (extremely happy). 
+The analysis wanted to be a comparison between two countries. Hence, to direct our analysis on a significant and not random comparison, we appealed to the 2018 Eurostat report on the happiest European country of the year. Although the survey question was different (“rank your frequency of being happy in the past four weeks”), it was still an important starting point for the choice of our countries: 
+we opted for Italy, since it is our home country, and for Finland since in the 
+Eurostat report it is the highest ranked country.
+```{r}
+library(tidyverse)
+library(rio)
+
+happy_data <- import("ESS1-9e01.csv")
+```
+
