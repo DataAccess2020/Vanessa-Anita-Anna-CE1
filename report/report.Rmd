@@ -8,9 +8,9 @@ In this analysis we have used the European Social Survey data (Round 9 – 2018)
 To begin with our small research, the variable chosen was “happy” which is formulated for the survey into the following question:
 “Taking all things together, how happy would you say you are?”
 The categories in which the answer could fall are comprised within 0 (extremely unhappy) to 10 (extremely happy). 
-The analysis wanted to be a comparison between two countries. Hence, to direct our analysis on a significant and not random comparison, we appealed to the 2018 Eurostat report on the happiest European country of the year. Although the survey question was different (“rank your frequency of being happy in the past four weeks”), it was still an important starting point for the choice of our countries: 
+The analysis wanted to be a comparison between two countries. Hence, to direct our analysis on a significant and not random comparison, we appealed to the 2018 Eurostat report (https://ec.europa.eu/eurostat/web/products-eurostat-news/-/DDN-20191107-1) on the happiest European country of the year. Although the survey question was different (“rank your frequency of being happy in the past four weeks”), it was still an important starting point for the choice of our countries: 
 we opted for Italy, since it is our home country, and for Finland since in the 
-Eurostat (https://ec.europa.eu/eurostat/web/products-eurostat-news/-/DDN-20191107-1) report it is the highest ranked country.
+Eurostat  report it is the highest ranked country.
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(rio)
@@ -71,6 +71,7 @@ happy_cntry %>%
 To be sure that the difference between the happiness level in Italy and Finland is statistically significant, we decided to compute a t-test to compare the two means.
 
 ##### T-Test
+We decided to test the differences between these two specific countries because we supposed that the Finns could be happier than the Italians because of their better economical and socio-political situation. 
 ```{r}
 t.test(happy_it$happy, happy_fi$happy, var.equal = TRUE)
 ```
